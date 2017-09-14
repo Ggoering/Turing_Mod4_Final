@@ -35,6 +35,9 @@ app.post('/api/v1/items', (request, response) => {
     response.status(201).json(data)
   })
   .catch((error) => {
+    if (error.code === '23514') {
+      return response.status(422).json({error: 'Cleanliness type is not allowed.  Try Sparkling, Dusty, or Rancid'})
+    }
     response.status(500).json(error)
   })
 })
@@ -44,8 +47,18 @@ app.put('/api/v1/items/:id', (request, response) => {
   .update({
     cleanliness: request.body.cleanliness,
   }, '*')
-  .then((data) => response.status(201).json(data))
-  .catch((error) => response.status(500).json(error))
+  .then((data) => {
+    if (!data.length) {
+      return response.status(404).json({error: 'no entry exists'})
+    }
+    response.status(301).json(data)
+  })
+  .catch((error) => {
+    if (error.code === '23514') {
+      return response.status(422).json({error: 'Cleanliness type is not allowed.  Try Sparkling, Dusty, or Rancid'})
+    }
+    response.status(500).json(error)
+  })
 })
 
 app.set('port', process.env.PORT || 3000);
