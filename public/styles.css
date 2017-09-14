@@ -1,0 +1,74 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+}
+
+body, html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  position: relative;
+}
+
+.wall, .garage {
+  height: 100%;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.control-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.wall {
+  background-color: #ffebcd;
+  width: 150px;
+}
+
+.garage {
+  position: relative;
+  background-color: #F2F2F3;
+  flex-grow: 1;
+}
+
+.door {
+  height: 0px;
+  background-color: black;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  z-index: 2;
+  transition: all 5s;
+}
+
+.garage-display {
+  display: flex;
+  height: 100%;
+}
+
+.garage-list {
+  flex-basis: 66%
+}
+
+.garage-info-wrapper {
+  flex-basis: 34%;
+  height: 100%;
+}
+
+.garage-info-sum, .garage-info-breakdown {
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

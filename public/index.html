@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>WOO FINAL EXAM</title>
+    <link rel='stylesheet' href='styles.css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,700' rel='stylesheet'>
+  </head>
+  <body>
+    <div class="left wall"></div>
+    <section class="garage">
+      <div class="door"></div>
+      <header class="garage-header">
+        <input class="new-garage-item" type="text" placeholder="add some more junk">
+        <input class="new-garage-reason" type="text" placeholder="Reason it's going here">
+        <select class="cleanliness-selector new-garage-item-cleanliness">
+          <option selected value="Sparkling">Sparkling Clean</option>
+          <option value="Dusty">Dusty</option>
+          <option value="Rancid">Rancid</option>
+        </select>
+        <button class="submit-item-button">Throw it in</button>
+      </header>
+      <section class="garage-display">
+        <main class="garage-list"></main>
+        <div class="garage-info-wrapper">
+          <div class="garage-info-sum"></div>
+          <div class="garage-info-breakdown"></div>
+        </div>
+      </section>
+    </section>
+    <div class="right wall">
+      <div class="control-panel">
+        <button class="up-button">UP</button>
+        <button class="down-button">DN</button>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src='scripts.js'> </script>
+  </body>
+</html>
