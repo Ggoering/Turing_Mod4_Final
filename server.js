@@ -14,7 +14,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(`${__dirname}/public`));
 
-app.set('port', process.env.PORT || 3000);
 
 app.get('/api/v1/items', (request, response) => {
   db('garage_items').select('*')
@@ -48,6 +47,8 @@ app.put('/api/v1/items/:id', (request, response) => {
   .then((data) => response.status(201).json(data))
   .catch((error) => response.status(500).json(error))
 })
+
+app.set('port', process.env.PORT || 3000);
 
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on ${app.get('port')}.`);
