@@ -23,4 +23,8 @@ describe('API Routes', () => {
       .then(() => done());
   });
   
+  describe('GET /v1/items', () => {
+    it('should return all entries in the table')
+  })
+  
 });
