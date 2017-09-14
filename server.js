@@ -35,6 +35,9 @@ app.post('/api/v1/items', (request, response) => {
     response.status(201).json(data)
   })
   .catch((error) => {
+    if (error.code === '23514') {
+      return response.status(422).json({error: 'Cleanliness type is not allowed.  Try Sparkling, Dusty, or Rancid'})
+    }
     response.status(500).json(error)
   })
 })
