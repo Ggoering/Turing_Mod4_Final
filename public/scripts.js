@@ -1,4 +1,17 @@
-var sortDir = 'up'
+$('.new-garage-item').on('change', disableSubmit)
+$('.submit-item-button').on('click', addItem)
+$('.garage-list').on('change', $('.cleanliness-selector'), updateCleanliness)
+$('.down').on('click', closeDoor)
+$('.up').on('click', openDoor)
+$('.garage').on('click', '.garage-list-item', expandInfo)
+
+getItems()
+.then((data) => {
+  postItems(data)
+  displayBreakdown(data)
+  displayItemCount(data)
+  sortGarageItems()
+})
 
 function getItems() {
   return fetch('api/v1/items')
@@ -22,16 +35,10 @@ function postItems(data) {
         </article> 
         `)
       setCleanlinessBar(data[i].cleanliness, data[i].id)
+      $('input').val('')
+      disableSubmit()
     }
 }
-
-getItems()
-.then((data) => {
-  postItems(data)
-  displayBreakdown(data)
-  displayItemCount(data)
-  sortGarageItems()
-})
 
 function setCleanlinessBar(defaultLevel, id) {
   const cleanlinessArray = ['Sparkling', 'Dusty', 'Rancid']
@@ -83,8 +90,10 @@ function openDoor() {
   $('.door').height('0px')
 }
 
-$('.down').on('click', closeDoor)
-$('.up').on('click', openDoor)
+
+function expandInfo() {  
+  $(this).find('.expanded-info').height('auto')
+}
 
 function addItem() {
   fetch('/api/v1/items', {
@@ -102,12 +111,14 @@ function addItem() {
       postItems(data)
       displayBreakdown(data)
       displayItemCount(data)
+      sortGarageItems()
     })
   })
 }
 
 function updateCleanliness(event) {
-  itemId = event.target.closest('article').id
+  const itemId = event.target.closest('article').id
+  
   fetch(`/api/v1/items/${itemId}`, {
     method: 'PUT',
     body: JSON.stringify({ 
@@ -126,16 +137,6 @@ function updateCleanliness(event) {
   })
 }
 
-$('.submit-item-button').on('click', addItem)
-$('.garage-list').on('change', $('.cleanliness-selector'), updateCleanliness)
-
-
-
-
-
-
-
-
 function sortGarageItems() {
   var $items = $('.garage-list-item')
   
@@ -151,10 +152,9 @@ function sortGarageItems() {
     }
     return 0;
   });
-  
   $items.detach().appendTo('.garage-list');
 }
 
-
-
-
+function disableSubmit() {
+  $('.new-garage-item').val() ? $('.submit-item-button').prop("disabled", false) : $('.submit-item-button').prop("disabled", true)
+}
