@@ -14,13 +14,6 @@ body {
   position: relative;
 }
 
-h1 {
-  font-family: "Comic Sans MS";
-  color: black;
-  font-size: 80px;
-  transform: rotateZ(-45deg);
-}
-
 h2 {
   text-align: center;
 }
