@@ -14,11 +14,12 @@
         <input class="new-garage-item" type="text" placeholder="Add some more junk">
         <input class="new-garage-reason" type="text" placeholder="Reason it's going here">
         <select class="cleanliness-selector new-garage-item-cleanliness">
-          <option selected value="Sparkling">Sparkling Clean</option>
+          <option disabled selected value="Sparkling">How clean is it?</option>
+          <option value="Sparkling">Sparkling Clean</option>
           <option value="Dusty">Dusty</option>
           <option value="Rancid">Rancid</option>
         </select>
-        <button class="submit-item-button">Throw it in</button>
+        <button disabled class="submit-item-button">Throw it in</button>
       </header>
       <section class="garage-display">
         <main class="garage-list"></main>
