@@ -86,7 +86,7 @@ describe('API Routes', () => {
   })
   
   describe('PUT /v1/items', () => {
-    it.skip('HAPPY PATH - update cleanliness in table', (done) => {
+    it('HAPPY PATH - update cleanliness in table', (done) => {
       const newEntry = {
         cleanliness: 'Sparkling',
       };
@@ -100,8 +100,8 @@ describe('API Routes', () => {
             .put(`/api/v1/items/${response.body[0].id}`)
             .send(newEntry)
             .end((err2, response2) => {
-              response2.status.should.equal(301)
-              response.should.be.json;
+              response2.status.should.equal(200)
+              response2.should.be.json;
               response2.body.length.should.equal(1)
               response2.body[0].should.have.property('name')
               response2.body[0].name.should.equal('Luna')
@@ -115,10 +115,11 @@ describe('API Routes', () => {
         })
     })
     
-      it.skip('SAD PATH - attempted to insert a disallowed cleanliness value', (done) => {
+      it('SAD PATH - attempted to insert a disallowed cleanliness value', (done) => {
         const newEntry = {
           cleanliness: 'whatever',
         };
+        chai.request(server)
         .get('/api/v1/items')
         .end((err, response) => {
           chai.request(server)
@@ -133,8 +134,7 @@ describe('API Routes', () => {
         })    
       })
       
-      
-      it.skip('SAD PATH - attempted to insert a disallowed cleanliness value', (done) => {
+      it('SAD PATH - attempted to insert a disallowed cleanliness value', (done) => {
         const newEntry = {
           cleanliness: 'whatever',
         };

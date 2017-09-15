@@ -1,4 +1,3 @@
-require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 
@@ -49,9 +48,9 @@ app.put('/api/v1/items/:id', (request, response) => {
   }, '*')
   .then((data) => {
     if (!data.length) {
-      return response.status(404).json({error: 'no entry exists'})
+      return response.status(404).json({error: 'No entry exists'})
     }
-    response.status(301).json(data)
+    response.status(200).json(data)
   })
   .catch((error) => {
     if (error.code === '23514') {
