@@ -70,8 +70,7 @@ function displayBreakdown(data) {
 function displayItemCount(data) {
   $('.garage-info-sum').append(
     `<div class="break-down-container">
-      <h2>How much junk do you have?</h2>
-      <h3>${data.length} items</h2>
+      <h2>${data.length} items of junk in storage</h2>
     </div>`
   )
 }
@@ -84,8 +83,8 @@ function openDoor() {
   $('.door').height('0px')
 }
 
-$('.down-button').on('click', closeDoor)
-$('.up-button').on('click', openDoor)
+$('.down').on('click', closeDoor)
+$('.up').on('click', openDoor)
 
 function addItem() {
   fetch('/api/v1/items', {
