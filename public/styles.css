@@ -2,6 +2,7 @@
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
   margin: 0;
+  color: #563D3F;
 }
 
 body, html {
@@ -11,6 +12,14 @@ body, html {
 body {
   display: flex;
   position: relative;
+}
+
+h2 {
+  text-align: center;
+}
+
+h3, h2 {
+  margin-bottom: 20px;
 }
 
 .wall, .garage {
@@ -25,40 +34,83 @@ body {
 }
 
 .control-panel {
+  height: 100px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
 .wall {
-  background-color: #ffebcd;
+  background-color: #cbcbcb;
   width: 150px;
 }
 
 .garage {
+  display: flex;
+  flex-direction: column;
   position: relative;
-  background-color: #F2F2F3;
+  background-color: #cbcbcb;
   flex-grow: 1;
+  border-right: 3px solid #563D3F;
+  border-left: 3px solid #563D3F;
+
 }
 
 .door {
-  height: 0px;
-  background-color: black;
+  height: 100%;
+  background-color: #6F73D2;
   position: absolute;
   width: 100%;
   top: 0;
   z-index: 2;
-  transition: all 5s;
+  transition: all 5s linear;
 }
 
 .garage-display {
+  border-top: 3px solid #563D3F;
+  flex-grow: 1;
   display: flex;
   height: 100%;
+  padding: 15px;
+}
+
+.garage-header {
+  background: #f2f2f2;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 75px;
+}
+
+.garage-header input {
+  flex-grow: 1;
+}
+
+.submit-item-button {
+  width: 150px;
+  background-color: #6F73D2;
+}
+
+
+.garage-header select, input, .submit-item-button {
+  margin-right: 10px;
+  border: 3px solid #563D3F;
+  height: 100%;
+  font-size: 20px;
+  font-weight: 700;
+  padding-left: 10px;
+}
+
+.cleanliness-selector {
+  border-radius: 0;
 }
 
 .garage-list {
-  flex-basis: 66%
+  margin-right: 20px;
+  flex-basis: 66%;
+  overflow-y: scroll;
 }
 
 .garage-info-wrapper {
@@ -67,8 +119,43 @@ body {
 }
 
 .garage-info-sum, .garage-info-breakdown {
-  height: 50%;
+  margin-bottom: 20px;
+  height: 48%;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 3px solid #563D3F;
+  padding: 20px;
+  text-align: left;
+  background: #f2f2f2;
 }
+
+.garage-list-item {
+  background-color: #f2f2f2;
+  border: 3px solid #563D3F;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.expanded-info {
+  /*height: 0px;*/
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+}
+
+button img {
+  width: 40px;
+}
+
+.button {
+  width: 100%;
+  color: transparent;
+  border: 0;
+  background: transparent;
+}
+
+.down {
+  transform: rotateZ(180deg);
+}
+
